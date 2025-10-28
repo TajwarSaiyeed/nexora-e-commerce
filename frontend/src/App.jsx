@@ -16,7 +16,7 @@ function App() {
     total: 0,
     itemCount: 0,
   });
-  const [cartRefetchKey, setCartRefetchKey] = useState(0);
+  const [cartKey, setCartKey] = useState(0);
 
   // Fetch cart on initial load
   useEffect(() => {
@@ -86,7 +86,7 @@ function App() {
             <ProductGrid
               onCartUpdate={(data) => {
                 setCartData(data);
-                setCartRefetchKey((prev) => prev + 1);
+                setCartKey((prev) => prev + 1);
               }}
             />
           </div>
@@ -102,11 +102,11 @@ function App() {
             {/* Cart Sidebar */}
             <div className="fixed right-0 top-[73px] z-40 h-[calc(100vh-73px)] w-full max-w-sm border-l border-border bg-background shadow-lg lg:relative lg:top-0 lg:h-full lg:max-w-sm lg:shadow-none">
               <CartSidebar
-                key={`cart-${cartRefetchKey}`}
+                key={`cart-${cartKey}`}
                 onCheckout={() => setIsCheckoutOpen(true)}
                 onClose={() => setIsCartOpen(false)}
                 onCartUpdate={setCartData}
-                refetchKey={cartRefetchKey}
+                refetchKey={cartKey}
               />
             </div>
           </>

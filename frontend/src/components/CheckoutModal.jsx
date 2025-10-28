@@ -24,7 +24,8 @@ export default function CheckoutModal({
       return;
     }
 
-    if (!email.trim() || !email.includes("@")) {
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email.trim() || !emailPattern.test(email)) {
       setError("Please enter a valid email");
       return;
     }

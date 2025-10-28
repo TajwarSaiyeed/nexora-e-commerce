@@ -25,8 +25,12 @@ export const api = {
       body: JSON.stringify({ productId, quantity }),
     });
     if (!response.ok) {
-      const error = await response.json();
-      throw new Error(error.message || "Failed to add to cart");
+      let errorMessage = "Failed to add to cart";
+      try {
+        const error = await response.json();
+        errorMessage = error.message || errorMessage;
+      } catch (e) {}
+      throw new Error(errorMessage);
     }
     const data = await response.json();
     return data.data;
@@ -38,9 +42,14 @@ export const api = {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ quantity }),
     });
+
     if (!response.ok) {
-      const error = await response.json();
-      throw new Error(error.message || "Failed to update cart");
+      let errorMessage = "Failed to update cart";
+      try {
+        const error = await response.json();
+        errorMessage = error.message || errorMessage;
+      } catch (e) {}
+      throw new Error(errorMessage);
     }
     const data = await response.json();
     return data.data;
@@ -72,8 +81,12 @@ export const api = {
       body: JSON.stringify({ name, email }),
     });
     if (!response.ok) {
-      const error = await response.json();
-      throw new Error(error.message || "Failed to checkout");
+      let errorMessage = "Failed to checkout";
+      try {
+        const error = await response.json();
+        errorMessage = error.message || errorMessage;
+      } catch (e) {}
+      throw new Error(errorMessage);
     }
     const data = await response.json();
     return data.receipt;

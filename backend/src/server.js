@@ -49,5 +49,5 @@ app.use(notFound);
 app.use(errorHandler);
 
 app.listen(PORT, () => {
-  console.log(`Server run at http://localhost:${PORT}`);
+  console.log(`Server running at http://localhost:${PORT}`);
 });

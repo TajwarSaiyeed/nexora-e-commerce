@@ -18,7 +18,6 @@ function App() {
   });
   const [cartKey, setCartKey] = useState(0);
 
-  // Fetch cart on initial load
   useEffect(() => {
     const fetchInitialCart = async () => {
       try {
@@ -31,12 +30,11 @@ function App() {
     fetchInitialCart();
   }, []);
 
-  // Handle checkout
   const handleCheckout = (receiptData) => {
     setReceipt(receiptData);
     setCartData({ items: [], total: 0, itemCount: 0 });
     setIsCheckoutOpen(false);
-    setIsCartOpen(false); // Close cart sidebar
+    setIsCartOpen(false);
   };
 
   return (

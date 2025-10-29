@@ -87,46 +87,4 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-// @route   GET /api/checkout/orders
-// @desc    Get all orders (for testing)
-// @access  Public
-router.get("/orders", async (req, res, next) => {
-  try {
-    const orders = await Order.find({ userId: MOCK_USER_ID })
-      .sort({ createdAt: -1 })
-      .limit(10);
-
-    res.json({
-      success: true,
-      count: orders.length,
-      data: orders,
-    });
-  } catch (error) {
-    next(error);
-  }
-});
-
-// @route   GET /api/checkout/orders/:id
-// @desc    Get single order
-// @access  Public
-router.get("/orders/:id", async (req, res, next) => {
-  try {
-    const order = await Order.findById(req.params.id);
-
-    if (!order) {
-      return res.status(404).json({
-        success: false,
-        message: "Order not found",
-      });
-    }
-
-    res.json({
-      success: true,
-      data: order,
-    });
-  } catch (error) {
-    next(error);
-  }
-});
-
 module.exports = router;

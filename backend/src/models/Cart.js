@@ -18,7 +18,7 @@ const cartSchema = new mongoose.Schema(
   {
     userId: {
       type: String,
-      default: "mock-user-123", // Mock user for now
+      default: "mock-user-123",
       required: true,
     },
     items: [cartItemSchema],
